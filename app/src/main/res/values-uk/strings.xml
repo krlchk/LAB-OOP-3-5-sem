@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="enter_city_message">Будь ласка, введіть назву міста!</string>
+    <string name="error_fetching_data">Помилка отримання даних про погоду!</string>
+    <string name="error_parsing_data">Помилка обробки даних про погоду!</string>
+    <string name="temperature">Температура</string>
+    <string name="feels_like">Відчувається як</string>
+    <string name="humidity">Вологість</string>
+    <string name="weather_info">%1$s: %2$s°C\n%3$s: %4$s°C\n%5$s: %6$s%%</string>
+</resources>
+
