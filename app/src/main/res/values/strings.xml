@@ -7,4 +7,15 @@
     <string name="feels_like">Feels Like</string>
     <string name="humidity">Humidity</string>
     <string name="weather_info">%1$s: %2$s°C\n%3$s: %4$s°C\n%5$s: %6$s%%</string>
+    <string name="weather_data_received">Weather data received</string>
+    <string name="weather_data_displayed">Weather data displayed</string>
+    <string name="no_weather_data_found">No weather data found</string>
+    <string name="widget_updated_with_city">Widget updated with city</string>
+    <string name="search_button_clicked">Search button clicked</string>
+    <string name="error_executing_task">Error executing task</string>
+    <string name="empty_city_name">City name is empty</string>
+    <string name="app_label">WEATHER APP</string>
+    <string name="hint_enter_city">Enter City</string>
+    <string name="button_search">Search</string>
 </resources>
+

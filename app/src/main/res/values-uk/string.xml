@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="enter_city_message">Будь ласка, введіть назву міста!</string>
+    <string name="error_fetching_data">Помилка отримання даних про погоду!</string>
+    <string name="error_parsing_data">Помилка обробки даних про погоду!</string>
+    <string name="temperature">Температура</string>
+    <string name="feels_like">Відчувається як</string>
+    <string name="humidity">Вологість</string>
+    <string name="weather_info">%1$s: %2$s°C\n%3$s: %4$s°C\n%5$s: %6$s%%</string>
+    <string name="weather_data_received">Дані про погоду отримані</string>
+    <string name="weather_data_displayed">Дані про погоду відображені</string>
+    <string name="no_weather_data_found">Дані про погоду не знайдені</string>
+    <string name="widget_updated_with_city">Віджет оновлено з містом</string>
+    <string name="search_button_clicked">Кнопка пошуку натиснута</string>
+    <string name="error_executing_task">Помилка виконання завдання</string>
+    <string name="empty_city_name">Назва міста порожня</string>
+    <string name="app_label">ПОГОДА</string>
+    <string name="hint_enter_city">Введіть місто</string>
+    <string name="button_search">Пошук</string>
+</resources>
+
+

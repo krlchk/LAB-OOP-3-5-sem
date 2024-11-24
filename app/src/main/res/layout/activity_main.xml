@@ -8,7 +8,6 @@
     android:background="#3EB0E6"
     tools:context=".MainActivity">
 
-
     <ImageView
         android:id="@+id/imgaeView"
         android:layout_width="match_parent"
@@ -20,7 +19,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WEATHER APP"
+        android:text="@string/app_label"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:textColor="@color/white"
@@ -35,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:background="#6EE2D5"
-        android:hint="Enter City"
+        android:hint="@string/hint_enter_city"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
         android:textSize="32dp"
@@ -48,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="200dp"
-        android:text="Search"
+        android:text="@string/button_search"
         android:textSize="20dp"
         android:backgroundTint="#6EE2D5">
     </Button>
@@ -63,9 +62,7 @@
         android:textFontWeight="500"
         android:textStyle="bold"
         android:background="#6EE2D5"
-        android:textColor="@color/white"
-        >
-
+        android:textColor="@color/white">
     </TextView>
 
 </RelativeLayout>
