@@ -6,6 +6,9 @@
     <string name="temperature">Температура</string>
     <string name="feels_like">Відчувається як</string>
     <string name="humidity">Вологість</string>
+    <string name="pressure">Тиск</string>
+    <string name="temp_max">Максимальна температура</string>
+    <string name="temp_min">Мінімальна температура</string>
     <string name="weather_info">%1$s: %2$s°C\n%3$s: %4$s°C\n%5$s: %6$s%%</string>
     <string name="weather_data_received">Дані про погоду отримані</string>
     <string name="weather_data_displayed">Дані про погоду відображені</string>

@@ -1,6 +1,5 @@
 package com.example.weatherapp;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
@@ -71,10 +70,17 @@ public class WeatherWidget extends AppWidgetProvider {
 
                 JSONObject jsonObject = new JSONObject(result.toString());
                 JSONObject main = jsonObject.getJSONObject("main");
-                String temperature = String.valueOf(main.getDouble("temp") - 273.15);
+
+                double temperature = main.getDouble("temp") - 273.15;
+                double feelsLike = main.getDouble("feels_like") - 273.15;
                 String weatherCondition = jsonObject.getJSONArray("weather").getJSONObject(0).getString("description");
 
-                return new String[]{city, temperature, weatherCondition};
+                return new String[]{
+                        city,
+                        String.format("%.2f", temperature),
+                        String.format("%.2f", feelsLike),
+                        weatherCondition
+                };
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
@@ -87,12 +93,14 @@ public class WeatherWidget extends AppWidgetProvider {
                 RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.weather_widget);
                 views.setTextViewText(R.id.widget_city_name, weatherData[0]);
                 views.setTextViewText(R.id.widget_temperature, weatherData[1] + " °C");
-                views.setTextViewText(R.id.widget_weather_condition, weatherData[2]);
+                views.setTextViewText(R.id.widget_feels_like, context.getString(R.string.feels_like) + ": " + weatherData[2] + " °C");
+                views.setTextViewText(R.id.widget_weather_condition, weatherData[3]);
 
                 appWidgetManager.updateAppWidget(appWidgetId, views);
             }
         }
     }
 }
+
 
 

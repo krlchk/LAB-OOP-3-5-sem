@@ -6,6 +6,9 @@
     <string name="temperature">Temperature</string>
     <string name="feels_like">Feels Like</string>
     <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="temp_max">Maximal temperature</string>
+    <string name="temp_min">Minimal temperature</string>
     <string name="weather_info">%1$s: %2$s°C\n%3$s: %4$s°C\n%5$s: %6$s%%</string>
     <string name="weather_data_received">Weather data received</string>
     <string name="weather_data_displayed">Weather data displayed</string>

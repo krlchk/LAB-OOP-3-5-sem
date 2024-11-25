@@ -1,5 +1,6 @@
 package com.example.weatherapp;
 
+import android.annotation.SuppressLint;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -64,23 +65,15 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
             if (result != null) {
                 try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    JSONObject main = jsonObject.getJSONObject("main");
+                    WeatherData weatherData = parseWeatherData(result);
 
-                    main.remove("sea_level");
-                    main.remove("grnd_level");
-                    main.remove("preassure");
-
-                    String weatherInfo = main.toString();
-                    weatherInfo = weatherInfo.replace("temp", getString(R.string.temperature))
-                            .replace("feels_like", getString(R.string.feels_like))
-                            .replace("humidity", getString(R.string.humidity))
-                            .replace("{", "")
-                            .replace("}", "")
-                            .replace(",", "\n")
-                            .replace(":", " : ");
-
-                    weatherInfo = convertToCelsius(weatherInfo);
+                    String weatherInfo = String.format("%s: %.2f°C\n%s: %.2f°C\n%s: %.2f°C\n%s: %.2f°C\n%s: %d%%\n%s: %d hPa",
+                            getString(R.string.temperature), weatherData.getTemperature() - 273.15,
+                            getString(R.string.feels_like), weatherData.getFeelsLike() - 273.15,
+                            getString(R.string.temp_min), weatherData.getTempMin() - 273.15,
+                            getString(R.string.temp_max), weatherData.getTempMax() - 273.15,
+                            getString(R.string.humidity), weatherData.getHumidity(),
+                            getString(R.string.pressure), weatherData.getPressure());
 
                     show.setText(weatherInfo);
                     Log.d(TAG, getString(R.string.weather_data_displayed));
@@ -96,20 +89,22 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        private String convertToCelsius(String weatherInfo) {
-            String[] lines = weatherInfo.split("\n");
-            StringBuilder sb = new StringBuilder();
-            for (String line : lines) {
-                if (line.contains(getString(R.string.temperature)) || line.contains(getString(R.string.feels_like))) {
-                    String[] parts = line.split(" : ");
-                    double kelvin = Double.parseDouble(parts[1].trim());
-                    double celsius = kelvin - 273.15;
-                    line = parts[0] + " : " + String.format("%.2f", celsius) + " °C";
-                }
-                sb.append(line).append("\n");
-            }
-            return sb.toString();
+
+        private WeatherData parseWeatherData(String jsonData) throws Exception {
+            JSONObject jsonObject = new JSONObject(jsonData);
+            JSONObject main = jsonObject.getJSONObject("main");
+
+            WeatherData weatherData = new WeatherData();
+            weatherData.setTemperature(main.getDouble("temp"));
+            weatherData.setFeelsLike(main.getDouble("feels_like"));
+            weatherData.setTempMin(main.getDouble("temp_min"));
+            weatherData.setTempMax(main.getDouble("temp_max"));
+            weatherData.setHumidity(main.getInt("humidity"));
+            weatherData.setPressure(main.getInt("pressure"));
+
+            return weatherData;
         }
+
 
         private void updateCity(Context context, String city) {
             SharedPreferences sharedPreferences = context.getSharedPreferences("WeatherAppPrefs", Context.MODE_PRIVATE);
@@ -160,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
 
 
 
